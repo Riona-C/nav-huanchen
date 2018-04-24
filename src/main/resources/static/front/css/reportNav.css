@@ -1,0 +1,40 @@
+.left-bar ul li:nth-child(3){
+    background:#2088cc;
+}
+
+.report-list li{
+    cursor: pointer;
+    float: left;
+    margin-left: 22px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    list-style: none;
+    outline: 1px solid #ccc;
+    padding: 2px 10px;
+    margin-top: 22px;
+}
+
+/*选项框的样式*/
+.func-first,.func-two,.func-three{
+    width: 200px;
+    min-height: 60px;
+    max-height: 500px;
+    background: #e3e3e3;
+    position: absolute;
+    display: none;
+    outline: #ccc 1px solid;
+}
+
+.func-first div,
+.func-two div,
+.func-three div {
+    cursor: default;
+    text-indent: 1em;
+    font-family: "Microsoft YaHei UI";
+}
+.func-first div:hover,
+.func-two div:hover,
+.func-three div:hover {
+    background: rgba(204, 204, 204, 0.79);
+}

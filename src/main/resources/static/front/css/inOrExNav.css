@@ -1,0 +1,64 @@
+.always-choose{
+    width: 100%;
+    height: 100%;
+}
+.left-choice,.mid-choice,.right-choice{
+    float: left;
+}
+.left-choice,.right-choice{
+    width: 20%;
+    height: 100%;
+    display: none;
+}
+.mid-choice{
+    width: 60%;
+    height: 100%;
+    display: none;
+}
+.mid-top{
+    width: 100%;
+    height: 80%;
+    display: none;
+}
+.mid-bottom{
+    width: 100%;
+    height: 20%;
+    display: none;
+}
+.left-choice,.mid-top,.mid-bottom,.right-choice{
+    outline: #cccccc 1px solid;
+    overflow: auto;
+}
+
+.left-choice span,.mid-top span,.mid-bottom span,.right-choice span{
+    display: inline-block;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+.left-choice span{
+    border: 1px solid #0d29ff;
+    background: rgba(13, 41, 255, 0.09);
+}
+.mid-top span{
+    border: 1px solid #ff3600;
+    background: rgba(255, 54, 0, 0.09);
+}
+.mid-bottom span{
+    border: 1px solid #ffcd05;
+    background: rgba(255, 215, 0, 0.3);
+}
+.right-choice span{
+    border: 1px solid #00ff00;
+    background: rgba(18, 255, 13, 0.11);
+}
+
+.left-bar ul li:nth-child(1){
+    background:#2088cc;
+}

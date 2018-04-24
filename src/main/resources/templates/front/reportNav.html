@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>报表导航</title>
+
+    <link rel="stylesheet" th:href="@{/front/css/leftBar.css}">
+    <link rel="stylesheet" th:href="@{/front/css/reportNav.css}">
+</head>
+<body>
+
+<form enctype="multipart/form-data" method="post" action="/reportNav/upWord">
+    <input type="file" name="file"/>
+    <input type="submit" value="上传"/>
+</form>
+
+
+<div class="left-bar">
+    <ul>
+        <li><a href="">收支</a></li>
+        <li><a href="">业务</a></li>
+        <li><a href="">报表</a></li>
+        <li><a href="">资金</a></li>
+        <li><a href="">过程</a></li>
+        <li><a href="">科目</a></li>
+    </ul>
+</div>
+
+<!--右侧主要部分-->
+<div class="container">
+
+    <div class="content">
+
+        <!--筛选出的结果-->
+        <div class="choice">
+
+            <!--报表列表-->
+            <ul class="report-list" >
+                <li th:each="report:${reports}" th:text = "${report.name}" th:tid = "${report.id}"></li>
+            </ul>
+
+            <!--改变窗口大小-->
+            <img class="change-size" th:src="@{/front/images/maxWindow.png}" alt="最大化"
+                 title="最大化">
+
+        </div>
+
+        <!--横着的线用来放大缩小-->
+        <div class="horizon-line"></div>
+
+        <!--结果预览-->
+        <div class="preview">
+            <!--改变窗口大小-->
+            <img class="change-size" th:src="@{/front/images/maxWindow.png}" alt="最大化"
+                 title="最大化">
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <span>操作员:xxx</span> <span>业务日期:2018-03-26</span> <span>单位:xxxxxxxxx</span>
+        <span>账套:xxxxxxxxxxxxxxxxxxxx</span> <span>应用服务器:192.168.1.1:0000</span>
+    </div>
+</div>
+
+
+<!--点击单元格要出来的选项框-->
+<div class="func-first"></div>
+<div class="func-two"></div>
+<div class="func-three"></div>
+
+
+<!-- ajax -->
+<script th:src="@{/front/js/ajax.js}"></script>
+<script th:src="@{/front/js/common.js}"></script>
+
+<!-- 改变上下窗口的大小 -->
+<script th:src="@{/front/js/resize.js}"></script>
+
+<!--报表-->
+<script th:src="@{/front/js/reportNav.js}"></script>
+
+</body>
+</html>

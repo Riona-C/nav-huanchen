@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8">
+    <title>树状图</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_601433_9zjbgpw4sxbyy14i.css">
+    <!--<link rel="stylesheet" href="css/tree.css">-->
+    <!--<link rel="stylesheet" href="css/business.css">-->
+    <link rel="stylesheet" th:href="@{/admin/css/tree.css}">
+    <link rel="stylesheet" th:href="@{/admin/css/business.css}">
+</head>
+<body>
+
+<!--顶部栏目-->
+<div class="top-title">
+    <h2>业务管理</h2>
+    <span>后台管理</span>
+</div>
+<!--主题部分-->
+<div class="container">
+    <!--左边栏目分类-->
+    <div class="left-nav">
+        <ul>
+            <li class="item"><a href="javascript:">上部管理</a></li>
+            <li class="item"><a href="javascript:">中部管理</a></li>
+            <li class="item"><a href="javascript:">下部管理</a></li>
+        </ul>
+    </div>
+    <!--中间树形结构-->
+    <div class="leftBox">
+        <div id="box" class="treeBox">
+            <div class="child-box"></div>
+        </div>
+        <div class="choice-btn">
+            <div id="close"><i class="iconfont icon-shanchuanniu"></i></div>
+            <div id="addChild">
+                <img th:src="@{/admin/imgs/xiaji.png}">
+                <span>下级</span>
+            </div>
+            <div id="addSibling">
+                <img th:src="@{/admin/imgs/tongji.png}">
+                <span>同级</span>
+            </div>
+            <div id="removeNode">
+                <img th:src="@{/admin/imgs/shanchu.png}">
+                <span>删除</span>
+            </div>
+            <div id="editorText">
+                <img th:src="@{/admin/imgs/bianji.png}">
+                <span>编辑</span>
+            </div>
+            <div id="home">
+                <img th:src="@{/admin/imgs/xianshi.png}">
+                <span>显示</span>
+                <div class="home-operate">
+                    <ul>
+                        <li><a href="">是否展开</a></li>
+                        <li><a href="javascript:">字体颜色</a></li>
+                        <li><a href="javascript:">显示背景</a></li>
+                        <li><a href="javascript:">加粗显示</a></li>
+                        <li><a href="javascript:">清楚格式</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="more">
+                <img th:src="@{/admin/imgs/gengduo.png}">
+                <span>更多</span>
+            </div>
+        </div>
+        <div id="inputText">
+            <input id="input" type="text" name="" value="" maxlength="250">
+            <input type="button" id="editorText" value="确定">
+        </div>
+        <button id="btn">添加分类</button>
+    </div>
+    <!--右边隐藏的更多操作按钮-->
+    <div class="more-operate">
+        <h2>更多操作</h2>
+        <ul>
+            <li><a href="javascript:">按钮1</a></li>
+            <li><a href="javascript:">按钮2</a></li>
+            <li><a href="javascript:">按钮3</a></li>
+            <li><a href="javascript:">按钮4</a></li>
+            <li><a href="javascript:" id="packUp" style="font-size:12px;color:#666;">>>收起</a></li>
+        </ul>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    var treeDatas = JSON.parse([[${busiTree}]]);
+</script>
+
+<script th:src="@{/front/js/ajax.js}"></script>
+<script th:inline="javascript" th:src="@{/admin/js/test.js}"></script>
+<script th:src="@{/admin/js/business.js}"></script>
+<script th:src="@{/admin/js/dict/pinyin_dict_notone.js}"></script>
+<script th:src="@{/admin/js/pinyinUtil.js}"></script>
+</body>
+</html>

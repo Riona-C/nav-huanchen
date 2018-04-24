@@ -1,0 +1,27 @@
+server:
+  port: 8080
+spring:
+
+  http:
+    encoding.charset: UTF-8
+    encoding.enable: true
+    encoding.force: true
+
+  thymeleaf:
+    suffix: .html
+    cache: false
+
+
+#数据库连接
+  datasource:
+#    url: jdbc:sqlserver://192.168.1.104:1433;DatabaseName=report
+    url: jdbc:sqlserver://localhost:1433;DatabaseName=report
+    username: sa
+    password: "123"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+#    create每次运行都会在数据库中新建一个表，如果你之前有那个表，它会删除原来的后再新建一个表
+      ddl-auto: update
+    show-sql: true
+
