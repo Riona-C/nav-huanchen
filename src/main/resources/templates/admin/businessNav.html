@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>树状图</title>
@@ -10,7 +10,6 @@
     <link rel="stylesheet" th:href="@{/admin/css/business.css}">
 </head>
 <body>
-
 <!--顶部栏目-->
 <div class="top-title">
     <h2>业务管理</h2>
@@ -71,29 +70,36 @@
             <input id="input" type="text" name="" value="" maxlength="250">
             <input type="button" id="editorText" value="确定">
         </div>
+        <!--单独添加新节点按钮 （备用）-->
         <button id="btn">添加分类</button>
+        <!--<input type="file" id="word-file">-->
     </div>
+
     <!--右边隐藏的更多操作按钮-->
     <div class="more-operate">
         <h2>更多操作</h2>
         <ul>
-            <li><a href="javascript:">按钮1</a></li>
-            <li><a href="javascript:">按钮2</a></li>
-            <li><a href="javascript:">按钮3</a></li>
-            <li><a href="javascript:">按钮4</a></li>
+            <li><a href="javascript:">字体颜色</a></li>
+            <li><a href="javascript:">显示背景</a></li>
+            <li><a href="javascript:">字体大小</a></li>
+            <li><a href="javascript:">边框样式</a></li>
+            <li><a href="javascript:">边框颜色</a></li>
             <li><a href="javascript:" id="packUp" style="font-size:12px;color:#666;">>>收起</a></li>
         </ul>
     </div>
 </div>
 
 <script th:inline="javascript">
-    var treeDatas = JSON.parse([[${busiTree}]]);
-</script>
 
-<script th:src="@{/front/js/ajax.js}"></script>
-<script th:inline="javascript" th:src="@{/admin/js/test.js}"></script>
-<script th:src="@{/admin/js/business.js}"></script>
+    var treeDatas = JSON.parse([[${busiTree}]]);
+    console.log(treeDatas);
+</script>
 <script th:src="@{/admin/js/dict/pinyin_dict_notone.js}"></script>
+<script th:src="@{/admin/js/dict/pinyin_dict_firstletter.js}"></script>
 <script th:src="@{/admin/js/pinyinUtil.js}"></script>
+<script th:src="@{/front/js/ajax.js}"></script>
+<script th:src="@{/admin/js/test.js}"></script>
+<script th:src="@{/admin/js/business.js}"></script>
+
 </body>
 </html>

@@ -1,24 +1,25 @@
-
-let data = [
-        {id:"7",name:"苏杲",pid:"",oid:"1",iid:"sh",ut:"0" }, 
-        {id:"8",name:"苏玩",pid:"",oid:"2",iid:"sw",ut:"0" }, 
-        {id:"1",name:"苏序",pid:"7",oid:"3",iid:"sx",ut:"0" }, 
-        {id:"2",name:"苏澹",pid:"1",oid:"4",iid:"sz",ut:"0" }, 
-        {id:"3",name:"苏涣",pid:"1",oid:"5",iid:"sh",ut:"0" }, 
-        {id:"4",name:"苏洵",pid:"1",oid:"6",iid:"sx",ut:"0" }, 
-        {id:"5",name:"苏轼",pid:"4",oid:"7",iid:"ss",ut:"0" }, 
-        {id:"6",name:"苏辙",pid:"4",oid:"8",iid:"sz",ut:"0" }, 
-        {id:"9",name:"苏迈",pid:"5",oid:"9",iid:"sm",ut:"0" }, 
-        {id:"10",name:"苏迨",pid:"5",oid:"10",iid:"sd",ut:"0" }, 
-        {id:"11",name:"苏过",pid:"5",oid:"11",iid:"sg",ut:"0" }, 
-        {id:"12",name:"苏遁",pid:"5",oid:"12",iid:"sx",ut:"0" }, 
-        {id:"24",name:"测试",pid:"2",oid:"13",iid:"cs",ut:"5" }, 
-        {id:"24",name:"测试1",pid:"2",oid:"14",iid:"cs",ut:"5" }, 
-        {id:"24",name:"测试1",pid:"2",oid:"15",iid:"cs",ut:"5" }, 
-        {id:"24",name:"测试1",pid:"2",oid:"16",iid:"cs",ut:"5" }, 
-        {id:"24",name:"测试1",pid:"2",oid:"17",iid:"cs",ut:"5" }, 
-        {id:"25",name:"测试2",pid:"2",oid:"18",iid:"cs",ut:"5" } 
-    ];
+let data = treeDatas;
+console.log(data+'_____');
+// let data = [
+//         {id:"7",name:"苏杲",pid:"",oid:"1",iid:"sh",ut:"0" },
+//         {id:"8",name:"苏玩",pid:"",oid:"2",iid:"sw",ut:"0" },
+//         {id:"1",name:"苏序",pid:"7",oid:"3",iid:"sx",ut:"0" },
+//         {id:"2",name:"苏澹",pid:"1",oid:"4",iid:"sz",ut:"0" },
+//         {id:"3",name:"苏涣",pid:"1",oid:"5",iid:"sh",ut:"0" },
+//         {id:"4",name:"苏洵",pid:"1",oid:"6",iid:"sx",ut:"0" },
+//         {id:"5",name:"苏轼",pid:"4",oid:"7",iid:"ss",ut:"0" },
+//         {id:"6",name:"苏辙",pid:"4",oid:"8",iid:"sz",ut:"0" },
+//         {id:"9",name:"苏迈",pid:"5",oid:"9",iid:"sm",ut:"0" },
+//         {id:"10",name:"苏迨",pid:"5",oid:"10",iid:"sd",ut:"0" },
+//         {id:"11",name:"苏过",pid:"5",oid:"11",iid:"sg",ut:"0" },
+//         {id:"12",name:"苏遁",pid:"5",oid:"12",iid:"sx",ut:"0" },
+//         {id:"24",name:"测试",pid:"2",oid:"13",iid:"cs",ut:"5" },
+//         {id:"24",name:"测试1",pid:"2",oid:"14",iid:"cs",ut:"5" },
+//         {id:"24",name:"测试1",pid:"2",oid:"15",iid:"cs",ut:"5" },
+//         {id:"24",name:"测试1",pid:"2",oid:"16",iid:"cs",ut:"5" },
+//         {id:"24",name:"测试1",pid:"2",oid:"17",iid:"cs",ut:"5" },
+//         {id:"25",name:"测试2",pid:"2",oid:"18",iid:"cs",ut:"5" }
+//     ];
 
 //获取外容器对象
 let Box = document.getElementById('box');
@@ -34,7 +35,7 @@ let idArr = [];
 let n;
 //定义添加状态
 let status = false;
-//获取按钮盒子   
+//获取按钮盒子
 let button = document.getElementsByClassName('choice-btn')[0];
 // 获取文本编辑框
 let input = document.getElementById('input'),
@@ -73,7 +74,7 @@ function splitData(data,ele) {
         div = displayData(data,i);
         //把iid添加到idarr数组中
         idArr.push(Number(data[i].id));
-        div.onclick = function(){ 
+        div.onclick = function(){
             addClick(this);
         }
         //调用显示下拉或收起下拉
@@ -84,13 +85,13 @@ function splitData(data,ele) {
         // 遍历是否有子节点
         for(let j=0;j<data.length;j++){
             // 如果当前数据的id是另一条数据的父id,就把那条数据添加到数组里
-            if(data[i].id == data[j].pid){
+            if(data[i].id == data[j].dompid){
                 arr.push(data[j]);
             }
         }
-        
+
         // 判断当前的pid是否为空
-        if(data[i].pid == ''){
+        if(data[i].dompid == ''){
             // 如果没有pid,就把节点添加到最外边的容器里
             ele.appendChild(div);
             // 开始让子元素隐藏
@@ -106,7 +107,7 @@ function splitData(data,ele) {
             div2.style.marginLeft = 15+'px';
             // 获取与当前pid相等的id的元素
             let domDiv = document.getElementsByClassName('dom-'+data[i].id);
-            
+
             // 当与pid相等的data[i].id的元素存在时，就把创建的子元素添加进去
             if(domDiv.length > 0){
                 // 把新创建的元素添加到与pid相等的data[i].id的元素的子元素中
@@ -122,7 +123,7 @@ function splitData(data,ele) {
                 // 给当前元素绑定下拉显示事件(不要把显示下拉的函数放到单击事件里，否则会先发生单击事件)
                 displayChild(div2);
             }
-        }  
+        }
     }
 }
 
@@ -136,7 +137,7 @@ function displayData(data,i){
     child.classList.add('child-box');
     // 获得唯一标识
     let cateId = data[i].id;
-    let cateName = data[i].name;
+    let cateName = data[i].domc;
     //设置唯一类名
     div.className = "dom-" + cateId;
     //设置节点的Id
@@ -160,12 +161,12 @@ function displayData(data,i){
     span.innerHTML = cateName;
 
     // 设置默认颜色
-    span.style.color = '#D2D3D1';  
-    
+    span.style.color = '#D2D3D1';
+
     return div;
 }
 
-// 给按钮绑定添加分类事件
+// 给按钮绑定添加分类事件（备用）
 btn.onclick = function(){
     // 调用添加分类函数
     addNode(Box);
@@ -186,7 +187,7 @@ function addNode(obj){
     div.className = "dom-" + n;
     //设置节点的Id
     div.setAttribute("leavesId",cateId);
-
+    // div.setAttribute('id',cateId);
     // 给创建元素添加公共类名
     div.classList.add('list');
     //给所有新创建节点也添加 clickNow类名
@@ -204,7 +205,7 @@ function addNode(obj){
     // 给文本节点设置拼音首字母属性
     span.setAttribute('initial',valueText);
     // 设置默认颜色
-    span.style.color = '#D2D3D1';  
+    span.style.color = '#D2D3D1';
     // 把箭头元素和span元素都添加到div中
     div.appendChild(icon);
     div.appendChild(span);
@@ -234,79 +235,6 @@ function addNode(obj){
     displayChild(div);
 }
 
-//增加节点发送请求
-// function addNodeAjax(data){
-//     //1.实例化ajax对象
-//     let xhr = new XMLHttpRequest();
-//     //准备数据，确定请求路径
-//     xhr.open('post',url/business/addDom,true);
-//     xhr.setRequestHeader("Content-type","application/json;charset=utf-8");
-//     //发送请求
-//     xhr.send(data);
-//     xhr.onreadystatechange = function(){
-//         alert('发送成功');
-//     }
-// }
-
-
-
-
-
-
-
-//who代表哪个页，dow代表哪部分（上或中或下）做什么，data是数据
-function ajax1(who,dow,data)
-{
-    let result;
-    let xmlhttp;
-    let url;
-
-    switch (who) {
-//    收支
-        case "i":
-            url = "inOrExNav" ;
-            break;
-//		业务
-        case "b":
-            url ="businessNav" ;
-            break;
-//		报表
-        case "r":
-            url = "reportNav" ;
-            break;
-//		资金
-        case "c":
-            url ="capitalNav" ;
-            break;
-//		过程
-        case "p":
-            url = "processNav";
-            break;
-//		科目
-        case "s":
-            url = "subjectNav";
-            break;
-
-        default:
-            break;
-    }
-
-    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
-    } else {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-            result =xmlhttp.responseText;
-        }
-    }
-
-    xmlhttp.open("POST",url+dow+".jsp?id="+data.id + "&name="+data.name+"&pid="+data.pid+"&oid="+data.oid+"&iid="+data.iid+"&ut="+data.ut,true);
-    xmlhttp.send();
-////    将返回的值return出去
-//    return result;
-}
 
 // 获取当前点击的节点对象
 clickObj = document.getElementsByClassName('clickNow');
@@ -358,7 +286,7 @@ function addClick(obj){
             lists[i].querySelector('.title').style.background = '#e1e9f3';
         }
     }
-    
+
     // 获取当前点击元素的offset值
     let x = obj.offsetLeft;
     let y = obj.offsetTop;
@@ -385,10 +313,10 @@ addSibling.onclick = function(e){
 
     // 获取所点击节点的父亲节点
     let clickPrent = clickNow.parentNode;
-    
+
     //调用添加节点函数
     addNode(clickPrent);
-    
+
     // 获取新添加同级分类的节点
     let newNode = Box.querySelector(".dom-"+n);
 
@@ -479,46 +407,61 @@ function editorNode(clickNow,newNode,topT,leftT){
             //让文本框失去焦点
             input.blur();
         }
-    }
+    };
     //失去焦点时
     input.onblur = function(){
         //获取文本输入框的值
         _value = input.value;
-        // 把文本转换为拼音首字母
-        let valueText = pinyinUtil.getFirstLetter(_value, true);
         //失去焦点时，再次判断value值是否为空，若为空，就删除新加的节点，
         //否则给input框的value值赋值为空
         if(input.value == ''){
-            console.log('fsdfsfsfsdfsdf');
             //调用删除新节点函数
             deleteNewNode(newNode);
         }else{
-            console.log(_value);
-            //替换文本
-            newNode.querySelector('.title').innerHTML = _value;
-            //发送ajax请求
-            let parentNodeId = newNode.parentNode.parentNode.getAttribute('leavesid');
-            let pNum = parseInt(parentNodeId);
-            console.log(pNum);
-            //发送ajax请求
-            argData = {
-                id:n,
-                domc:_value,
-                dompid:pNum,
-                oid:0,
-                iid:valueText,
-                style:'',
-                ut:0
+            console.log("oooooooooooooooooooooo",_value);
+            // 把文本转换为拼音首字母
+            let valueText = pinyinUtil.getFirstLetter(_value, true);
+            //调用正则匹配函数
+            let result = mateText(_value);
+            if(result){
+                alert('输入内容不能包含：* @ % $ ! & "" ‘’ / ~ # `');
+            }else{
+                //替换文本
+                newNode.querySelector('.title').innerHTML = _value;
+                //给新节点添加拼音首字母属性
+                newNode.setAttribute('iid',valueText);
+                //添加新节点后设置它的颜色
+                newNode.querySelector('.title').style.color = '#000';
+                //发送ajax请求
+                let parentNodeId = newNode.parentNode.parentNode.getAttribute('leavesid');
+                let pNum;
+                if(parentNodeId){
+                    pNum = parseInt(parentNodeId);
+                }else{
+                    pNum = 0;
+                };
+
+                //发送ajax请求
+                argData = {
+                    domc:_value,
+                    dompid:pNum,
+                    oid:0,
+                    iid:valueText,
+                    style:'',
+                    ut:0
+                };
+                //调用ajax函数
+                ajax("POST",
+                    "/business/addDom",
+                    argData,
+                    function success(data) {
+                        //请求成功后执行获取行列，创建表格
+                        console.log('请求成功');
+                        console.log(data);
+                        newNode.setAttribute('leavesid',data.id);
+                    }
+                );
             }
-            //调用ajax函数
-            ajax("POST",
-                "/business/addDom",
-                argData,
-                function success(data) {
-                    //请求成功后执行获取行列，创建表格
-                    console.log('请求成功');
-                }
-            );
             //让输入框文本为空
             this.value = '';
         }
@@ -528,7 +471,7 @@ function editorNode(clickNow,newNode,topT,leftT){
 }
 
 // 绑定删除节点事件
-removeNode.onclick = function(e){ 
+removeNode.onclick = function(e){
     e.stopPropagation();
     //调用删除操作节点函数
     deleteNode();
@@ -536,8 +479,23 @@ removeNode.onclick = function(e){
 
 //封装删除操作节点函数
 function deleteNode(){
-    //获取当前点击节点 
+    //获取当前点击节点
     let clickNow = clickObj[0];
+    console.log(clickNow);
+    let nId = clickNow.getAttribute('leavesid');
+    console.log(nId);
+    let argData = {
+        id:nId
+    };
+    //调用ajax函数
+    ajax("POST",
+        "/business/delDom",
+        argData,
+        function success(data) {
+            //请求成功后执行获取行列，创建表格
+            console.log('删除成功');
+        }
+    );
     // 把当前删除按钮的父亲的父亲节点从祖先节点中移除
     clickNow.parentNode.removeChild(clickNow);
     button.style.display = 'none';
@@ -563,7 +521,10 @@ editorText.onclick = function(e){
     // 获取当前点击节点的offset值
     let tLeft = clickNow.offsetLeft;
     let tTop = clickNow.offsetTop;
-
+    //输入框的value值
+    let _value;
+    //请求的参数对象
+    let argData;
     //设置文本编辑框的位置
     inputText.style.top = tTop+'px';
     inputText.style.left = tLeft+15+'px';
@@ -576,7 +537,20 @@ editorText.onclick = function(e){
         e.stopPropagation();
         button.style.display = 'none';
         if(e.keyCode == 13){
-            let _value = input.value;
+            //当回车键按下时，让输入框失去焦点
+            input.blur();
+        }
+    };
+    //失去焦点时，让文本框内容为空
+    input.onblur = function(){
+        console.log(this.value);
+        _value = this.value;
+        //判断一下此时输入框的value值是否为空，如果为空，就删除当前节点
+        //如果不为空，就设置为空，下此再次显示的时候保证输入框里没有内容
+        if(input.value == ''){
+            //调用删除节点函数
+            deleteNode();
+        }else{
             // 把文本转换为拼音首字母
             let valueText = pinyinUtil.getFirstLetter(_value, true);
             //调用正则匹配函数
@@ -588,20 +562,44 @@ editorText.onclick = function(e){
                 // 给文本节点设置拼音首字母属性
                 clickNow.querySelector('.title').setAttribute('iid',valueText);
                 clickNow.querySelector('.title').style.color = '#000';
-                inputText.style.display = 'none';
-            }
-            if(input.value == ''){
-                //调用删除节点函数
-                deleteNode();
-            }
+                //获取当前节点的pid
+                let parentNodeId = clickNow.parentNode.parentNode.getAttribute('leavesid');
+                let pNum;
+                if(parentNodeId){
+                    pNum = parseInt(parentNodeId);
+                }else{
+                    pNum = 0;
+                }
+                //获取当前节点的id
+                let nowId = clickNow.getAttribute('leavesid');
+                let nId = parseInt(nowId);
+                //发送ajax请求
+                argData = {
+                    id:nId,
+                    domc:_value,
+                    dompid:pNum,
+                    oid:0,
+                    iid:valueText,
+                    style:'',
+                    ut:0
+                };
+                //调用ajax函数
+                ajax("POST",
+                    "/business/editDom",
+                    argData,
+                    function success(data) {
+                        //请求成功后执行获取行列，创建表格
+                        console.log('请求成功');
+                        console.log(data);
+                    }
+                );
+            };
+            this.value = '';
         }
-    }
-    //失去焦点时，让文本框内容为空
-    input.onblur = function(){
-        this.value = '';
+
         inputText.style.display = 'none';
-    }
-}
+    };
+};
 
 // 给所有节点绑定显示下拉函数
 function displayChild(obj){

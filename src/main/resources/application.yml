@@ -14,8 +14,8 @@ spring:
 
 #数据库连接
   datasource:
-#    url: jdbc:sqlserver://192.168.1.104:1433;DatabaseName=report
-    url: jdbc:sqlserver://localhost:1433;DatabaseName=report
+    url: jdbc:sqlserver://192.168.1.55:1433;DatabaseName=report
+#    url: jdbc:sqlserver://localhost:1433;DatabaseName=report
     username: sa
     password: "123"
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
